@@ -5,12 +5,5 @@ INSERT INTO product (id, name, picture_url, price) VALUES (4, 'Нюренбер�
 INSERT INTO product (id, name, picture_url, price) VALUES (5, 'Мюнхенская', 'https://res.cloudinary.com/sugrobov/image/upload/v1623323635/repos/sausages/2.jpg', 330.00);
 INSERT INTO product (id, name, picture_url, price) VALUES (6, 'Русская', 'https://res.cloudinary.com/sugrobov/image/upload/v1623323635/repos/sausages/1.jpg', 189.00);
 
-INSERT INTO product_info (product_id, name, price) VALUES (1, 'Сливочная', 320.00);
-INSERT INTO product_info (product_id, name, price) VALUES (2, 'Особая', 179.00);
-INSERT INTO product_info (product_id, name, price) VALUES (3, 'Молочная', 225.00);
-INSERT INTO product_info (product_id, name, price) VALUES (4, 'Нюренбергская', 315.00);
-INSERT INTO product_info (product_id, name, price) VALUES (5, 'Мюнхенская', 330.00);
-INSERT INTO product_info (product_id, name, price) VALUES (6, 'Русская', 189.00);
-
 INSERT INTO orders (id, status, date_created) SELECT i, (array['pending', 'shipped', 'cancelled'])[floor(random() * 3 + 1)], DATE(NOW() - (random() * (NOW()+'90 days' - NOW()))) FROM generate_series(1, 10000000) s(i);
 INSERT INTO order_product (quantity, order_id, product_id) SELECT floor(1+random()*50)::int, i, 1 + floor(random()*6)::int % 6 FROM generate_series(1, 10000000) s(i);
