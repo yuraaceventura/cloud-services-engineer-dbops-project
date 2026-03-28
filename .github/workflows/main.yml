@@ -15,8 +15,8 @@ jobs:
         flyway migrate \
             -url=${{ secrets.DB_URL }} \
             -user=${{ secrets.DB_USER }} \
-            -password=${{ secrets.DB_PASSWORD }} \
-            -locations=filesystem:src/main/resources/db/migration
+            -password=${{ secrets.DB_PASS }} \
+            -locations=filesystem:./migrations
 
     ### Этот шаг оставьте без изменений
     - name: Download and setup autotests binaries
