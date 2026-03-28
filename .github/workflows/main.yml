@@ -14,17 +14,14 @@ jobs:
     - name: Setup Flyway CLI
       uses: red-gate/setup-flyway@v1
       with:
-          # Use "community", "teams", or "enterprise"
           edition: community
-          # Set to true to consent to the Redgate EULA
-          i-agree-to-the-eula: true
     
     #### Добавьте шаг с Flyway-миграциями
     - run: |
         flyway migrate \
             -url=${{ secrets.DB_URL }} \
             -user=${{ secrets.DB_USER }} \
-            -password=${{ secrets.DB_PASSWOD }} \
+            -password=${{ secrets.DB_PASSWORD }} \
             -locations=filesystem:./migrations
 
     ### Этот шаг оставьте без изменений
